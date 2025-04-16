@@ -46,7 +46,7 @@ sensor:
     id: air_quality_sensor_level_sensor
     update_interval: 60s
     address: 0x19
-	pm_1_0:
+    pm_1_0:
       name: "PM1.0"
       id: pm1_0_sensor
       unit_of_measurement: "µg/m³"
@@ -56,7 +56,7 @@ sensor:
       id: pm2_5_sensor
       unit_of_measurement: "µg/m³"
       icon: mdi:chemical-weapon
-	pm_10:
+    pm_10:
       name: "PM10"
       id: pm10_sensor
       unit_of_measurement: "µg/m³"
