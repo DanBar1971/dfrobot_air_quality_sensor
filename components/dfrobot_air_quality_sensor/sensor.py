@@ -30,12 +30,13 @@ DEVICE_CLASS_PM105 = "pm105"
 
 CONF_PM_1_0 = "pm_1_0"
 CONF_PM_2_5 = "pm_2_5"
-CONF_PM_10  = "pm_10"
+CONF_PM_10_0 = "pm_10"
 
 CONF_PM_0_3UM = "pm_0_3um"
 CONF_PM_0_5UM = "pm_0_5um"
 CONF_PM_5_0UM = "pm_5_0um"
 CONF_PM_10_5UM = "pm_10_5um"
+
 CONF_AQI    = "aqi"
 CONF_CALCULATION_TYPE = "calculation_type"
 
@@ -71,7 +72,7 @@ CONFIG_SCHEMA = cv.Schema(
             device_class=DEVICE_CLASS_PM25,
             state_class=STATE_CLASS_MEASUREMENT,
         ),
-        cv.Optional(CONF_PM_10): sensor.sensor_schema(
+        cv.Optional(CONF_PM_10_0): sensor.sensor_schema(
             unit_of_measurement=UNIT_MICROGRAMS_PER_CUBIC_METER,
             icon=ICON_CHEMICAL_WEAPON,
             accuracy_decimals=0,
@@ -103,7 +104,7 @@ CONFIG_SCHEMA = cv.Schema(
             unit_of_measurement=UNIT_MICROGRAMS_PER_CUBIC_METER,
             icon=ICON_CHEMICAL_WEAPON,
             accuracy_decimals=0,
-            device_class=DEVICE_CLASS_PM10,
+            device_class=DEVICE_CLASS_PM1,
             state_class=STATE_CLASS_MEASUREMENT,
         ),    
         cv.Optional(CONF_AQI): sensor.sensor_schema(
@@ -136,7 +137,7 @@ async def to_code(config):
         cg.add(var.set_pm_2_5_sensor(sens))
     
     if CONF_PM_10_0 in config:
-        sens = await sensor.new_sensor(config[CONF_PM_10])
+        sens = await sensor.new_sensor(config[CONF_PM_10_0])
         cg.add(var.set_pm_10_sensor(sens))
     
     if CONF_PM_0_3UM in config:
@@ -159,3 +160,8 @@ async def to_code(config):
         sens = await sensor.new_sensor(config[CONF_AQI])
         cg.add(var.set_aqi_sensor(sens))
         cg.add(var.set_aqi_calculation_type(config[CONF_AQI][CONF_CALCULATION_TYPE]))
+        
+    
+    
+
+

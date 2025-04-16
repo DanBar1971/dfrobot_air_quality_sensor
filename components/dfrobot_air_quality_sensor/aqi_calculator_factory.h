@@ -25,5 +25,5 @@
    AQICalculator *aqi_calculator_ = new AQICalculator();
  };
  
- }
- }
+ }  // namespace hm3301
+ }  // namespace esphome

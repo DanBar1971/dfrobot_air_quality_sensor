@@ -48,5 +48,5 @@
    }
  };
  
- }
- }
+ }  // namespace dfrobot_air_quality_sensor
+ }  // namespace esphome

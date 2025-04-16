@@ -7,7 +7,7 @@ namespace dfrobot_air_quality_sensor {
 static const char *const TAG = "dfrobot_air_quality";
 
 void DFRobotAirQualitySensor::setup() {
-  ESP_LOGI(TAG, "Starting DFRobot air quality sensor...");
+  ESP_LOGI(TAG, "Starting DFRobot Air Quality Sensor...");
 
   sensor_ = new DFRobot_AirQualitySensor(&Wire, this->address_);
 
@@ -18,6 +18,7 @@ void DFRobotAirQualitySensor::setup() {
   }
 
   ESP_LOGI(TAG, "Sensor initialized successfully.");
+  
 }
 
 void DFRobotAirQualitySensor::update() {
@@ -40,23 +41,29 @@ void DFRobotAirQualitySensor::update() {
 
   if (pm_1_0_sensor_ != nullptr)
     pm_1_0_sensor_->publish_state(pm1);
+    
   if (pm_2_5_sensor_ != nullptr)
     pm_2_5_sensor_->publish_state(pm25);
+    
   if (pm_10_sensor_ != nullptr)
     pm_10_sensor_->publish_state(pm10);
+    
   if (aqi_sensor_ != nullptr)
     aqi_sensor_->publish_state(aqi);    
     
   if (pm_0_3_sensor_ != nullptr)
     pm_0_3_sensor_->publish_state(pm03);
+    
   if (pm_0_5_sensor_ != nullptr)
     pm_0_5_sensor_->publish_state(pm05);
+    
   if (pm_5_0_sensor_ != nullptr)
     pm_5_0_sensor_->publish_state(pm50);
+    
   if (pm_10_5_sensor_ != nullptr)
-    pm_10_5_sensor_->publish_state(pm105);
+  pm_10_5_sensor_->publish_state(pm105);
 
 }
 
-}
-}
+}  // namespace dfrobot_air_quality_sensor
+}  // namespace esphome

@@ -19,14 +19,14 @@
 //#define ENABLE_DBG
 
 #ifdef ENABLE_DBG
-#define DBG(...)
-    {
-        Serial.print("[");
-        Serial.print(__FUNCTION__);
-        Serial.print("(): ");
-        Serial.print(__LINE__);
-        Serial.print(" ] 0x");
-        Serial.println(__VA_ARGS__,HEX);
+#define DBG(...)                     \
+    {                                \
+        Serial.print("[");           \
+        Serial.print(__FUNCTION__);  \
+        Serial.print("(): ");        \
+        Serial.print(__LINE__);      \
+        Serial.print(" ] 0x");         \
+        Serial.println(__VA_ARGS__,HEX); \
     }
 #else
 #define DBG(...)
