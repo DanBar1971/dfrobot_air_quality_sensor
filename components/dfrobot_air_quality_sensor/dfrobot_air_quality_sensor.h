@@ -41,8 +41,13 @@ class DFRobotAirQualitySensor : public PollingComponent, public i2c::I2CDevice {
 
   AQICalculatorType aqi_calc_type_;
   AQICalculatorFactory aqi_calculator_factory_ = AQICalculatorFactory();
-  
-  DFRobot_AirQualitySensor *sensor_;
+
+  // NOTE:
+  // Don't use Arduino Wire/TwoWire inside this component.
+  // ESPHome 2025.12+ on ESP32 can run the I2C bus via an ESP-IDF backend.
+  // If a library calls Wire.begin() it can "acquire" the bus first and make
+  // ESPHome's I2C init fail with:
+  //   "I2C bus id(0) has already been acquired".
 };
 
 }  // namespace dfrobot_air_quality_sensor
